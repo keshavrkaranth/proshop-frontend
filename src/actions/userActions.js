@@ -126,9 +126,9 @@ export const getUserDetails = (id) =>async (dispatch,getState) =>{
       userLogin:{userInfo},
     } = getState()
 
-    var config = {
+    const config = {
       method: 'get',
-      url: `http://127.0.0.1:8000/api/users/${id}/`,
+      url: `${BACKEND_URL}/users/${id}/`,
       headers: {
         'Authorization': `Bearer ${userInfo.token}`,
       }
@@ -160,14 +160,14 @@ export const getUserDetails = (id) =>async (dispatch,getState) =>{
 
 
 export const updateUserProfile = (user) => {
-  var config = {
+  const config = {
     method: 'put',
     url: `${BACKEND_URL}/users/profile/update\n`,
     headers: {
       'Authorization': `Bearer ${user.token}`,
       'Content-Type': 'application/json'
     },
-    data : user
+    data: user
   };
 
   axios(config)
